@@ -17,14 +17,7 @@ Terraform automatically:
 
 Project Structure
 
-terraform-multi-instance/
-│── provider.tf               # AWS provider + versioning
-│── variables.tf              # All input variables declared here
-│── main.tf                   # EC2 & security group resources
-│── outputs.tf                # Public/Private IP outputs
-│── terraform.tfvars          # Actual values (region, instance count, etc.)
-│── .gitignore                # Ignore sensitive files
-│── README.md                 # Project documentation
+<img width="567" height="132" alt="Screenshot 2025-11-15 at 04 03 00" src="https://github.com/user-attachments/assets/42763c0d-df9e-4ebd-b8ce-e0562a301f00" />
 
 Skills Demonstrated
 	•	Infrastructure as Code (Terraform)
@@ -33,4 +26,7 @@ Skills Demonstrated
 	•	Clean, production-style Terraform layout
 
 Screenshots
- 
+
+ <img width="946" height="1026" alt="Screenshot 2025-11-15 at 03 59 05" src="https://github.com/user-attachments/assets/2af9d180-31df-4f0e-b95a-a29b69635032" />
+<img width="1370" height="164" alt="Screenshot 2025-11-15 at 04 01 26" src="https://github.com/user-attachments/assets/56234f3d-06f5-4536-98c2-cf186c560977" />
+
