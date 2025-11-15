@@ -1,9 +1,25 @@
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 5.0"
+    }
+  }
+}
+
+provider "aws" {
+  region = var.aws_region
+}
+
+# -------------------------
+# SECURITY GROUP
+# -------------------------
 resource "aws_security_group" "multi_sg" {
   name        = "multi-instance-sg"
-  description = "Allow SSH and all internal traffic"
+  description = "Allow SSH and internal traffic"
 
   ingress {
-    description = "SSH from anywhere"
+    description = "Allow SSH from anywhere"
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
@@ -11,11 +27,11 @@ resource "aws_security_group" "multi_sg" {
   }
 
   ingress {
-    description = "Allow all traffic within VPC"
+    description = "Allow all internal traffic"
     from_port   = 0
     to_port     = 65535
     protocol    = "tcp"
-    cidr_blocks = ["10.0.0.0/8"]
+    cidr_blocks = ["10.0.0.0/16"]
   }
 
   egress {
@@ -27,9 +43,12 @@ resource "aws_security_group" "multi_sg" {
   }
 }
 
+# -------------------------
+# EC2 INSTANCES (MULTIPLE)
+# -------------------------
 resource "aws_instance" "multi_instance" {
   count         = var.instance_count
-  ami           = "ami-0c76bd4bd2718c7c4" # Ubuntu 22.04 LTS (eu-west-2)
+  ami           = var.ami_id
   instance_type = var.instance_type
   key_name      = var.key_name
 
